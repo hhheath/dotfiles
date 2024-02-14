@@ -15,6 +15,8 @@ I want to keep track of the things that I use and and how they're set up. This s
 - digital ocean
 - ssh
 
+And a small bit of hardware: my zsa moonlander mk1 setup. 
+
 i realize that some of these will not have config files (notion calendar specifically) but I want to at least document *why* i use it. 
 
 ### Alacritty
