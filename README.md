@@ -8,7 +8,7 @@ I want to keep track of the things that I use and and how they're set up. This s
     - zsh
 - neovim
     - nvchad
-- tmux
+- [tmux](#tmux)
 - todoist
 - notion calendar
 - syncthing
