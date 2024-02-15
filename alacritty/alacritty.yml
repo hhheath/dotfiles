@@ -1,0 +1,10 @@
+window:
+  dimensions:
+   columns: 150
+   lines: 40
+  decorations: none
+font:
+  normal:
+    family: BlexMono Nerd Font
+  size: 14.0
+
