@@ -1,0 +1,21 @@
+import = ["/Users/heath/.config/alacritty/catppuccin-frappe.toml"]
+
+live_config_reload = true
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "BlexMono Nerd Font Mono"
+
+[window]
+decorations = "full"
+
+[window.dimensions]
+columns = 200
+lines = 80
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
+unfocused_hollow = true
+thickness = 0.15
