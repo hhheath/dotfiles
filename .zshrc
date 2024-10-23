@@ -50,6 +50,7 @@ alias cat="bat" # requires `brew install bat`
 alias gcam="git commit -a -m"
 alias gst="git status"
 alias ggpush="git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias wt="nvim ~/.config/wezterm/wezterm.lua"
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
