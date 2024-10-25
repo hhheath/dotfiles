@@ -7,7 +7,6 @@ config.font = wezterm.font("BlexMono Nerd Font")
 config.font_size = 14.0
 
 config.color_scheme = "Catppuccin Frappe"
--- config.color_scheme = "iTerm2 Solarized Dark"
 
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
