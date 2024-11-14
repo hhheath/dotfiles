@@ -4,5 +4,6 @@
 
 - zshrc
 - alacritty
+- wezterm
 - nvim
 - tmux
