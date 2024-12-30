@@ -1,6 +1,9 @@
 # Start Tmux
 # if [ "$TMUX" = "" ]; then tmux new -s default; fi
 
+# color ls output
+export CLICOLOR=1
+
 setopt autocd
 # setopt auto_cd
 
@@ -41,14 +44,14 @@ alias virtual="python -m venv .venv"
 alias activate="source .venv/bin/activate"
 alias ll='ls -al'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias ol='ollama run llama3.2' # requires ollama - https://github.com/ollama/ollama
+alias ol='ollama run llama3.2'
 alias v='nvim'
 alias dlaudio='f() { yt-dlp -x --audio-format opus $1. };f'
 alias tm='tmux'
 alias tmn='f() { tmux new-session -A -s $1. };f'
 alias daily="v ~/Documents/personal-notes/daily.md"
 alias todos="v ~/Documents/personal-notes/todos.md"
-alias cat="bat" # requires `brew install bat`
+alias cat="bat"
 alias gcam="git commit -a -m"
 alias gst="git status"
 alias ggpush="git push origin $(git rev-parse --abbrev-ref HEAD)"
@@ -63,3 +66,5 @@ eval "$(pyenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
