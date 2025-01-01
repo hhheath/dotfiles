@@ -32,13 +32,48 @@ zstyle ':vcs_info:git:*' formats       '(%F{005}%b%u%c%f)'
 zstyle ':vcs_info:git:*' actionformats '(%F{005}%b|%a%u%c%f)'
 #===================== Prompt =====================================================================
 
+#===================== Functions ==================================================================
+
+# ggpush because i like that command from omz
+ggpush() {
+  git push origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+# gcam because i like that command from omz
+gcam() {
+  if [ $# -eq 0 ]; then
+    # If no commit message is provided, prompt the user for one
+    echo "Please enter a commit message:"
+    read -r -p "> " msg
+    git commit -a -m "$msg"
+  else
+    # If a commit message is provided, use it
+    local msg=$1
+    shift
+    git commit -a -m "$msg"
+  fi
+}
+
+# gst because i like that command from omz
+gst() {
+  if [ $# -gt 0 ]; then
+    # If an argument is provided, assume it's a branch name and switch to that branch
+    local branch=$1
+    git checkout $branch
+  else
+    # If no arguments are provided, just show the current status
+    git status
+  fi
+}
+
+#===================== Functions ==================================================================
+
 # PATHs 
 export PATH="$HOME/.cargo/bin:$PATH" # cargo for rust
 export PATH="$HOME/.local/:$PATH"
 export PATH="/Applications/Alacritty.app/Contents/MacOS:$PATH" # this enables you to use alacritty commands, like to mirgate from yml to toml
 
 # aliases
-alias git-pub="git config --local user.name hhheath && git config --local user.email heath@steppe.sh"
 alias python="python3"
 alias virtual="python -m venv .venv"
 alias activate="source .venv/bin/activate"
@@ -52,9 +87,6 @@ alias tmn='f() { tmux new-session -A -s $1. };f'
 alias daily="v ~/Documents/personal-notes/daily.md"
 alias todos="v ~/Documents/personal-notes/todos.md"
 alias cat="bat"
-alias gcam="git commit -a -m"
-alias gst="git status"
-alias ggpush="git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias wt="nvim ~/.config/wezterm/wezterm.lua"
 
 # pyenv stuff
