@@ -9,4 +9,8 @@
 - nvim
 - tmux
 
-i have a terminal problem
+i have a terminal problem... i know. 
+
+## todos 
+
+- [ ] breakout zshrc file properly
