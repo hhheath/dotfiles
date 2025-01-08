@@ -88,6 +88,7 @@ alias daily="v ~/Documents/personal-notes/daily.md"
 alias todos="v ~/Documents/personal-notes/todos.md"
 alias cat="bat"
 alias wt="nvim ~/.config/wezterm/wezterm.lua"
+alias gt="nvim ~/.config/ghostty/config"
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
