@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 config.default_cursor_style = "SteadyBar"
 
-config.font = wezterm.font("BlexMono Nerd Font")
+config.font = wezterm.font("IBM Plex Mono")
 config.font_size = 12.0
 
 config.color_scheme = "Catppuccin Mocha"
