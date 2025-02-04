@@ -66,6 +66,27 @@ gst() {
   fi
 }
 
+# connect to first tmux session or make a new one if not running
+tmux_first_session() {
+    # Get the list of existing Tmux sessions, excluding any empty lines
+    local sessions=$(tmux ls 2>/dev/null | awk -F: '{print $1}' | sed '/^$/d')
+
+    if [[ -z "$sessions" ]]; then
+        echo "No tmux sessions found. Creating a new session..."
+        # Create a new Tmux session with a default name (e.g., 'default') and attach to it
+        tmux new-session -s default || {
+            echo "Failed to create a new Tmux session."
+            return 1
+        }
+    else
+        # Get the first session from the list
+        local first_session=$(echo "$sessions" | head -n 1)
+
+        # Attach to the first session
+        tmux attach-session -t "$first_session"
+    fi
+}
+
 #===================== Functions ==================================================================
 
 # PATHs 
@@ -82,13 +103,11 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias ol='ollama run llama3.2'
 alias v='nvim'
 alias dlaudio='f() { yt-dlp -x --audio-format opus $1. };f'
-alias tm='tmux'
-alias tmn='f() { tmux new-session -A -s $1. };f'
 alias daily="v ~/Documents/personal-notes/daily.md"
 alias todos="v ~/Documents/personal-notes/todos.md"
-alias cat="bat"
 alias wt="nvim ~/.config/wezterm/wezterm.lua"
 alias gt="nvim ~/.config/ghostty/config"
+alias tm="tmux_first_session"
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
