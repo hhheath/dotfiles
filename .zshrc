@@ -108,6 +108,7 @@ alias todos="v ~/Documents/personal-notes/todos.md"
 alias wt="nvim ~/.config/wezterm/wezterm.lua"
 alias gt="nvim ~/.config/ghostty/config"
 alias tm="tmux_first_session"
+alias btop="bpytop"
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
