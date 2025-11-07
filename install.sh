@@ -279,11 +279,11 @@ copy_configs() {
         log_info ".gitconfig already exists, skipping..."
     fi
 
-    # Initialize nvim submodule if needed
-    if [ ! -f "$DOTFILES_DIR/nvim/init.lua" ]; then
-        log_info "Initializing nvim submodule..."
-        git submodule update --init --recursive
-    fi
+    # Initialize and update submodules to latest
+    log_info "Updating submodules to latest commits..."
+    cd "$DOTFILES_DIR"
+    git submodule update --init --recursive --remote
+    log_success "Submodules updated to latest"
 
     # Link nvim config
     if [ ! -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
