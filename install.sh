@@ -126,10 +126,10 @@ install_ubuntu_packages() {
     # Install Neovim (latest stable)
     log_info "Installing Neovim..."
     if ! command -v nvim &> /dev/null; then
-        wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-        sudo tar xzf nvim-linux64.tar.gz -C /opt
-        sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-        rm nvim-linux64.tar.gz
+        wget https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz
+        sudo tar xzf nvim-linux-x86_64.tar.gz -C /opt
+        sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+        rm nvim-linux-x86_64.tar.gz
     fi
 
     # Install fzf
