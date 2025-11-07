@@ -110,6 +110,7 @@ install_ubuntu_packages() {
         libbz2-dev \
         libreadline-dev \
         libsqlite3-dev \
+        sqlite3 \
         libncursesw5-dev \
         xz-utils \
         tk-dev \

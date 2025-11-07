@@ -31,5 +31,5 @@ if command -v claude-new &> /dev/null; then
     alias cf='claude-focus'
     alias cs='claude-status'
     alias cm='claude-monitor'
-    alias cd='claude-dash'
+    alias cdb='claude-dash'
 fi

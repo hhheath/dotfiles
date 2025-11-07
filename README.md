@@ -278,6 +278,9 @@ vim ~/projects/my-project/comms/coordinator.md
 
 # Monitor progress in real-time
 cm my-project  # alias for claude-monitor
+
+# Or view all projects in dashboard
+cdb  # alias for claude-dash
 ```
 
 ### Available Commands
@@ -286,7 +289,7 @@ cm my-project  # alias for claude-monitor
 - `cf` / `claude-focus` - Switch active project
 - `cs` / `claude-status` - View all project statuses
 - `cm` / `claude-monitor` - Real-time monitoring (single project)
-- `cd` / `claude-dash` - Full dashboard (all projects)
+- `cdb` / `claude-dash` - Full dashboard (all projects)
 
 ### Documentation
 
