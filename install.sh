@@ -215,6 +215,9 @@ set_zsh_default() {
 copy_configs() {
     log_info "Copying configuration files..."
 
+    # Ensure .config directory exists first
+    mkdir -p "$HOME/.config"
+
     # Create necessary directories
     mkdir -p "$HOME/.config/ghostty"
     mkdir -p "$HOME/.config/aerospace"
@@ -226,8 +229,18 @@ copy_configs() {
     log_success "Copied .zshrc"
 
     # Copy modular zsh configs
-    cp -r "$DOTFILES_DIR/shell/zsh/"* "$HOME/.config/shell/zsh/"
-    log_success "Copied zsh modules"
+    if [ -d "$DOTFILES_DIR/shell/zsh" ]; then
+        cp -r "$DOTFILES_DIR/shell/zsh/"* "$HOME/.config/shell/zsh/"
+        if [ $? -eq 0 ]; then
+            log_success "Copied zsh modules"
+        else
+            log_error "Failed to copy zsh modules from $DOTFILES_DIR/shell/zsh/"
+            exit 1
+        fi
+    else
+        log_error "Zsh modules directory not found at $DOTFILES_DIR/shell/zsh/"
+        exit 1
+    fi
 
     # Backup and copy .tmux.conf
     backup_file "$HOME/.tmux.conf"
