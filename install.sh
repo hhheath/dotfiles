@@ -5,6 +5,9 @@
 
 set -e  # Exit on error
 
+# Get the directory where this script is located
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -288,9 +291,6 @@ copy_configs() {
 # Main installation flow
 main() {
     log_info "Starting dotfiles installation..."
-
-    # Get the directory where this script is located
-    DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     log_info "Dotfiles directory: $DOTFILES_DIR"
 
     # Detect OS
