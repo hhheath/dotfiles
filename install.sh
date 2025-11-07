@@ -138,8 +138,15 @@ install_ubuntu_packages() {
 
     # Install fzf
     if ! command -v fzf &> /dev/null; then
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-        ~/.fzf/install --all
+        if [ ! -d "$HOME/.fzf" ]; then
+            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+            ~/.fzf/install --all
+        else
+            log_info "fzf directory exists, running install..."
+            ~/.fzf/install --all
+        fi
+    else
+        log_info "fzf already installed"
     fi
 
     log_success "Ubuntu packages installed"
