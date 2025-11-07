@@ -3,4 +3,4 @@
 	url = https://github.com/hhheath/nvim
 [submodule "claude"]
 	path = claude
-	url = /Users/heath/code/claude-orchestration
+	url = https://github.com/hhheath/claude-orchestration.git
