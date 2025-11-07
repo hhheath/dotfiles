@@ -174,41 +174,6 @@ install_nvm() {
     fi
 }
 
-# Install Claude orchestration (optional)
-install_claude_orchestration() {
-    if [ -d "$DOTFILES_DIR/claude" ]; then
-        log_info "Installing Claude orchestration tool..."
-
-        # Check if Claude Code is installed
-        if ! command -v claude-code &> /dev/null; then
-            log_warn "Claude Code CLI not found."
-            log_warn "Install with: npm install -g @anthropic-ai/claude-code"
-            log_warn "Then run: claude-code auth"
-        fi
-
-        # Install Python dependencies for TUI (optional)
-        if command -v pip3 &> /dev/null; then
-            log_info "Installing Python TUI dependencies..."
-            if [ -f "$DOTFILES_DIR/claude/requirements.txt" ]; then
-                pip3 install -r "$DOTFILES_DIR/claude/requirements.txt" --break-system-packages 2>/dev/null || \
-                pip3 install -r "$DOTFILES_DIR/claude/requirements.txt" 2>/dev/null || \
-                log_warn "Could not install Python dependencies (non-critical)"
-            fi
-        fi
-
-        # Run the orchestration installer
-        if [ -f "$DOTFILES_DIR/claude/install.sh" ]; then
-            log_info "Running Claude orchestration installer..."
-            cd "$DOTFILES_DIR/claude" && bash install.sh && cd "$DOTFILES_DIR"
-            log_success "Claude orchestration installed"
-        else
-            log_warn "Claude orchestration install.sh not found, skipping..."
-        fi
-    else
-        log_info "Claude orchestration submodule not found, skipping..."
-        log_info "To add it later: cd ~/.dotfiles && git submodule update --init --recursive"
-    fi
-}
 
 # Set zsh as default shell
 set_zsh_default() {
@@ -322,9 +287,6 @@ main() {
     install_pyenv
     install_nvm
 
-    # Install Claude orchestration (optional)
-    install_claude_orchestration
-
     # Copy configuration files
     copy_configs
 
@@ -340,13 +302,6 @@ main() {
     log_info "4. Install a Python version with: pyenv install 3.12.0 && pyenv global 3.12.0"
     log_info "5. Install Node with: nvm install --lts && nvm use --lts"
     log_info ""
-    if [ -d "$DOTFILES_DIR/claude" ]; then
-        log_info "Claude Orchestration installed! Quick start:"
-        log_info "  - Create project: claude-new my-project"
-        log_info "  - View status: claude-status"
-        log_info "  - See docs: cat ~/.dotfiles/claude/START_HERE.md"
-        log_info ""
-    fi
     log_warn "Backups of existing configs saved to: ~/.dotfiles_backup/"
 }
 

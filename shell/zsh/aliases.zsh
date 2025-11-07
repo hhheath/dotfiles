@@ -24,12 +24,3 @@ alias gt="nvim ~/.config/ghostty/config"
 
 # Tmux
 alias tm="tmux_first_session"
-
-# Claude Orchestration (if installed)
-if command -v claude-new &> /dev/null; then
-    alias cn='claude-new'
-    alias cf='claude-focus'
-    alias cs='claude-status'
-    alias cm='claude-monitor'
-    alias cdb='claude-dash'
-fi

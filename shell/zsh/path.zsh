@@ -1,6 +1,6 @@
 # PATH configuration
 
-# User binaries (for claude commands, etc.)
+# User binaries
 export PATH="$HOME/bin:$PATH"
 
 # Rust/Cargo

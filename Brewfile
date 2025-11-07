@@ -29,12 +29,9 @@ brew "jq"
 # Development tools
 brew "pyenv"          # Python version management
 brew "nvm"            # Node version management
-brew "node"           # Node.js (for claude-code CLI)
+brew "node"           # Node.js
 brew "gh"             # GitHub CLI
 brew "yt-dlp"         # YouTube downloader (from aliases)
-
-# Claude Orchestration dependencies
-brew "sqlite"         # Database for orchestration state
 
 # System monitoring
 brew "bpytop"         # Better top (from aliases)

@@ -10,7 +10,6 @@ Personal dotfiles for macOS and Linux (Ubuntu/Debian).
 - **Version-controlled Neovim config** - Maintained as a git submodule
 - **Consistent theming** - Catppuccin across all tools
 - **Development ready** - Pre-configured for Python (pyenv), Node (nvm), and Rust
-- **Claude Orchestration** - Optional multi-agent AI development system (git submodule)
 
 ## Contents
 
@@ -37,13 +36,6 @@ Personal dotfiles for macOS and Linux (Ubuntu/Debian).
 
 ### Git
 - **.gitconfig** - Common aliases and sensible defaults (template)
-
-### Claude Orchestration (Optional)
-- **Multi-agent AI system** - Coder, Reviewer, Tester, and Coordinator working together
-- **Autonomous development** - Runs 24/7 in tmux sessions
-- **File-based communication** - Markdown files for task management
-- **Terminal UI** - Real-time monitoring with Python TUI
-- See `claude/START_HERE.md` for full documentation
 
 ## Quick Start
 
@@ -106,18 +98,6 @@ The `install.sh` script will:
    # Lazy.nvim will automatically install all plugins
    ```
 
-4. **(Optional) Set up Claude Orchestration**:
-   ```bash
-   # Install Claude Code CLI
-   npm install -g @anthropic-ai/claude-code
-   claude-code auth
-
-   # Create your first orchestrated project
-   claude-new my-project
-
-   # View status
-   claude-status
-   ```
 
 ## Directory Structure
 
@@ -139,11 +119,6 @@ dotfiles/
 │       ├── path.zsh       # PATH configuration
 │       ├── prompt.zsh     # Git-aware prompt
 │       └── pyenv.zsh      # Pyenv initialization
-├── claude/                # Claude orchestration (git submodule)
-│   ├── START_HERE.md      # Getting started guide
-│   ├── install.sh         # Orchestration installer
-│   ├── scripts/           # CLI tools (new, focus, status, etc.)
-│   └── templates/         # Project templates
 ├── .zshrc                 # Main zsh config (sources modules)
 ├── .tmux.conf             # Tmux configuration
 ├── .gitconfig             # Git configuration template
@@ -218,18 +193,6 @@ git add nvim
 git commit -m "Update nvim submodule"
 ```
 
-### Update Claude Orchestration
-
-The orchestration tool is also a git submodule:
-
-```bash
-cd ~/.dotfiles/claude
-git pull origin main
-cd ~/.dotfiles
-git add claude
-git commit -m "Update claude orchestration submodule"
-```
-
 ### Update Brewfile (macOS)
 
 To capture currently installed packages:
@@ -246,68 +209,6 @@ git commit -m "Update Brewfile"
 1. Create new file in `shell/zsh/` (e.g., `docker.zsh`)
 2. Add `source "$ZSH_CONFIG_DIR/docker.zsh"` to `.zshrc`
 3. Commit both files
-
-## Claude Orchestration
-
-The dotfiles include an optional multi-agent Claude orchestration system for autonomous development.
-
-### What It Does
-
-- **Coder** - Implements features based on task specifications
-- **Reviewer** - Reviews code for quality, security, and best practices
-- **Tester** - Writes comprehensive tests and measures coverage
-- **Coordinator** - Manages workflow, assigns tasks, tracks progress
-
-All agents run in separate tmux windows and communicate via markdown files.
-
-### Quick Start
-
-```bash
-# Create a new orchestrated project
-cn my-project  # alias for claude-new
-
-# This creates ~/projects/my-project/ with:
-# - code/      Your actual code
-# - comms/     Agent communication files
-# - .claude/   Agent configurations
-
-# Attach to the tmux session
-tmux attach -t my-project
-
-# Add tasks by editing the coordinator file
-vim ~/projects/my-project/comms/coordinator.md
-
-# Monitor progress in real-time
-cm my-project  # alias for claude-monitor
-
-# Or view all projects in dashboard
-cdb  # alias for claude-dash
-```
-
-### Available Commands
-
-- `cn` / `claude-new` - Create new orchestrated project
-- `cf` / `claude-focus` - Switch active project
-- `cs` / `claude-status` - View all project statuses
-- `cm` / `claude-monitor` - Real-time monitoring (single project)
-- `cdb` / `claude-dash` - Full dashboard (all projects)
-
-### Documentation
-
-Full documentation is available in the `claude/` directory:
-- `START_HERE.md` - Getting started guide
-- `QUICKSTART.md` - 10-minute setup
-- `ARCHITECTURE.md` - Technical deep-dive
-- `TUI_GUIDE.md` - Terminal UI guide
-
-### Use Cases
-
-Perfect for:
-- Continuous development while you're away
-- Managing multiple projects simultaneously
-- Maintaining code quality with automated reviews
-- Building comprehensive test suites
-- 24/7 development on a VPS
 
 ## Troubleshooting
 
