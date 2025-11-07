@@ -51,8 +51,8 @@ Personal dotfiles for macOS and Linux (Ubuntu/Debian).
 
 1. Clone this repository:
    ```bash
-   git clone --recurse-submodules https://github.com/hhheath/dotfiles.git ~/dotfiles
-   cd ~/dotfiles
+   git clone --recurse-submodules https://github.com/hhheath/dotfiles.git ~/.dotfiles
+   cd ~/.dotfiles
    ```
 
 2. Run the installation script:
@@ -190,12 +190,13 @@ If you prefer to manually install without the script:
 
 3. **Copy configs**:
    ```bash
+   cd ~/.dotfiles
    cp .zshrc ~/.zshrc
    cp -r shell ~/.config/shell
    cp .tmux.conf ~/.tmux.conf
    cp -r config/ghostty ~/.config/ghostty
    cp .gitconfig ~/.gitconfig
-   ln -s $(pwd)/nvim ~/.config/nvim
+   ln -s ~/.dotfiles/nvim ~/.config/nvim
    ```
 
 4. **Set zsh as default shell**:
@@ -210,9 +211,9 @@ If you prefer to manually install without the script:
 The nvim config is a git submodule, so you can update it independently:
 
 ```bash
-cd ~/dotfiles/nvim
+cd ~/.dotfiles/nvim
 git pull origin main
-cd ~/dotfiles
+cd ~/.dotfiles
 git add nvim
 git commit -m "Update nvim submodule"
 ```
@@ -222,9 +223,9 @@ git commit -m "Update nvim submodule"
 The orchestration tool is also a git submodule:
 
 ```bash
-cd ~/dotfiles/claude
+cd ~/.dotfiles/claude
 git pull origin main
-cd ~/dotfiles
+cd ~/.dotfiles
 git add claude
 git commit -m "Update claude orchestration submodule"
 ```
@@ -234,7 +235,7 @@ git commit -m "Update claude orchestration submodule"
 To capture currently installed packages:
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 brew bundle dump --force
 git add Brewfile
 git commit -m "Update Brewfile"
