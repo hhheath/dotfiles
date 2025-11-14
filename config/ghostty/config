@@ -1,5 +1,5 @@
 font-family = IBM Plex Mono
-font-size = 13
+font-size = 14
 confirm-close-surface = false
 theme = catppuccin-mocha
 window-width = 200
