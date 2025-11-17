@@ -32,7 +32,7 @@ log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
-# Detect OS
+# Detect OS - currently only supporting linux & macos 
 detect_os() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         OS="macos"

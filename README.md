@@ -7,9 +7,9 @@ Personal dotfiles for macOS and Linux (Ubuntu/Debian).
 - **Modular Zsh configuration** - Organized into separate files for easy maintenance
 - **Cross-platform support** - Works on both macOS and Ubuntu/Debian Linux
 - **Automated installation** - Single script to set up everything
-- **Version-controlled Neovim config** - Maintained as a git submodule
+- **Version-controlled Neovim config** - Maintained as a git submodule `git submodule update --recursive` 
 - **Consistent theming** - Catppuccin across all tools
-- **Development ready** - Pre-configured for Python (pyenv), Node (nvm), and Rust
+- **Development ready** - Pre-configured for Python (pyenv) and Node (nvm)
 
 ## Contents
 
@@ -18,7 +18,7 @@ Personal dotfiles for macOS and Linux (Ubuntu/Debian).
   - Git-aware prompt with branch and status indicators
   - Custom git commands (ggpush, gcam, gst)
   - Tmux integration
-  - Python, Node, and Rust path configuration
+  - Python and Node path configuration
 
 ### Terminal
 - **ghostty** - Primary terminal emulator (IBM Plex Mono, Catppuccin Mocha)

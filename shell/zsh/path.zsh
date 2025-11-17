@@ -3,9 +3,6 @@
 # User binaries
 export PATH="$HOME/bin:$PATH"
 
-# Rust/Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Local binaries
 export PATH="$HOME/.local/:$PATH"
 
