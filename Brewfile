@@ -3,8 +3,6 @@
 
 # Taps
 tap "nikitabobko/tap"
-tap "railwaycat/emacsmacport"
-tap "stripe/stripe-cli"
 
 # Core
 brew "coreutils"
@@ -33,19 +31,14 @@ brew "libpq"
 brew "marksman"
 brew "pyenv"
 brew "python@3.12"
-brew "stripe/stripe-cli/stripe"
 
-# Media & OCR
+# Media
 brew "ffmpeg"
-brew "tesseract"
 brew "yt-dlp"
 
 # System
 brew "bpytop"
 brew "fastfetch"
-
-# Editors
-brew "railwaycat/emacsmacport/emacs-mac@29"
 
 # Fonts
 cask "font-inconsolata"
