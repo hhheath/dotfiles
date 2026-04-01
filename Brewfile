@@ -2,51 +2,56 @@
 # Install with: brew bundle install
 
 # Taps
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "nikitabobko/tap"  # AeroSpace window manager
+tap "nikitabobko/tap"
+tap "railwaycat/emacsmacport"
+tap "stripe/stripe-cli"
 
-# Core tools
+# Core
+brew "coreutils"
+brew "curl"
 brew "git"
 brew "zsh"
-brew "curl"
-brew "wget"
 
 # Terminal & Shell
 brew "tmux"
-brew "zsh-completions"
+brew "zellij"
 
-# Editor
-brew "neovim"
+# Build tools (neovim from source, etc.)
+brew "cmake"
+brew "ninja"
 
 # Search & Navigation
-brew "fzf"
-brew "ripgrep"
+brew "bat"
 brew "fd"
-brew "tree"
 brew "jq"
+brew "ripgrep"
+brew "tree"
 
-# Development tools
-brew "pyenv"          # Python version management
-brew "nvm"            # Node version management
-brew "node"           # Node.js
-brew "gh"             # GitHub CLI
-brew "yt-dlp"         # YouTube downloader (from aliases)
+# Development
+brew "gh"
+brew "libpq"
+brew "marksman"
+brew "pyenv"
+brew "python@3.12"
+brew "stripe/stripe-cli/stripe"
 
-# System monitoring
-brew "bpytop"         # Better top (from aliases)
-brew "htop"
+# Media & OCR
+brew "ffmpeg"
+brew "tesseract"
+brew "yt-dlp"
 
-# Casks - Applications
-cask "ghostty"        # Terminal emulator
-cask "ollama"         # LLM (from aliases)
+# System
+brew "bpytop"
+brew "fastfetch"
 
-# Casks - Fonts
-cask "font-ibm-plex-mono"
-cask "font-blex-mono-nerd-font"
+# Editors
+brew "railwaycat/emacsmacport/emacs-mac@29"
 
-# Window management
-cask "nikitabobko/tap/aerospace"  # i3-like window manager for macOS
+# Fonts
+cask "font-inconsolata"
+cask "font-inconsolata-nerd-font"
 
-# Optional: Uncomment if you use these
-# cask "tailscale"    # VPN
+# Casks
+cask "nikitabobko/tap/aerospace"
+cask "gpg-suite"
+cask "localsend"

@@ -1,7 +1,7 @@
-font-family = IBM Plex Mono
+font-family = InconsolataMonoNerdFont
 font-size = 14
 confirm-close-surface = false
-theme = catppuccin-mocha
+theme = catppuccin mocha
 window-width = 200
 window-height = 60
 
@@ -11,3 +11,4 @@ keybind = ctrl+h=goto_split:left
 keybind = ctrl+j=goto_split:bottom
 keybind = ctrl+k=goto_split:top
 keybind = ctrl+l=goto_split:right
+keybind = shift+enter=text:\x1b\r

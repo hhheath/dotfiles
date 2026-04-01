@@ -1,248 +1,80 @@
 # dotfiles
 
-Personal dotfiles for macOS and Linux (Ubuntu/Debian).
+Personal dotfiles for macOS and Linux.
 
-## Features
+## What's in here
 
-- **Modular Zsh configuration** - Organized into separate files for easy maintenance
-- **Cross-platform support** - Works on both macOS and Ubuntu/Debian Linux
-- **Automated installation** - Single script to set up everything
-- **Version-controlled Neovim config** - Maintained as a git submodule `git submodule update --recursive` 
-- **Consistent theming** - Catppuccin across all tools
-- **Development ready** - Pre-configured for Python (pyenv) and Node (nvm)
+- **zsh** — single `.zshrc` with custom git-aware prompt, aliases, and functions
+- **ghostty** — terminal config (Inconsolata Mono Nerd Font, Catppuccin Mocha)
+- **tmux** — `Ctrl+Space` prefix, vim-style pane navigation
+- **neovim** — full LSP/Treesitter setup, maintained as a [submodule](https://github.com/hhheath/nvim)
+- **AeroSpace** — i3-like tiling window manager (macOS)
+- **Brewfile** — macOS packages via Homebrew
+- **Claude Code** — AI coding assistant
 
-## Contents
+## Install
 
-### Shell
-- **zsh** - Modular configuration with custom prompt, aliases, and functions
-  - Git-aware prompt with branch and status indicators
-  - Custom git commands (ggpush, gcam, gst)
-  - Tmux integration
-  - Python and Node path configuration
+```bash
+git clone --recurse-submodules https://github.com/hhheath/dotfiles.git ~/code/dotfiles
+cd ~/code/dotfiles
+./install.sh
+```
 
-### Terminal
-- **ghostty** - Primary terminal emulator (IBM Plex Mono, Catppuccin Mocha)
-- **tmux** - Terminal multiplexer with vim-style keybindings
+The install script handles both platforms:
 
-### Editor
-- **neovim** - Full-featured config with LSP, Treesitter, and Telescope
-  - Maintained as separate git submodule at [hhheath/nvim](https://github.com/hhheath/nvim)
-  - Lazy.nvim for plugin management
-  - Obsidian integration for note-taking
+**macOS** — installs Homebrew, runs `brew bundle` from Brewfile, installs nvm/node, copies configs, symlinks nvim, sets zsh as default shell, installs Claude Code.
 
-### macOS Specific
-- **AeroSpace** - i3-like tiling window manager
-- **Homebrew** - Package management via Brewfile
+**Linux** — installs packages via apt, builds Neovim from source, installs nvm/node, copies configs, symlinks nvim, sets zsh as default shell, installs Claude Code.
 
-### Git
-- **.gitconfig** - Common aliases and sensible defaults (template)
+### After install
 
-## Quick Start
+1. Restart your terminal (or `source ~/.zshrc`)
+2. Update `~/.gitconfig` with your name/email
+3. Open `nvim` to auto-install plugins
+4. `pyenv install 3.12 && pyenv global 3.12`
+5. `nvm install --lts`
 
-### Installation
-
-1. Clone this repository:
-   ```bash
-   git clone --recurse-submodules https://github.com/hhheath/dotfiles.git ~/.dotfiles
-   cd ~/.dotfiles
-   ```
-
-2. Run the installation script:
-   ```bash
-   ./install.sh
-   ```
-
-3. Restart your terminal or source the new configuration:
-   ```bash
-   source ~/.zshrc
-   ```
-
-4. Update `.gitconfig` with your personal information:
-   ```bash
-   nvim ~/.gitconfig
-   # Update name and email fields
-   ```
-
-### What the Install Script Does
-
-The `install.sh` script will:
-- ✓ Detect your OS (macOS or Linux)
-- ✓ Install base packages (git, zsh, curl, tmux, neovim, etc.)
-- ✓ Install pyenv with Python build dependencies
-- ✓ Install nvm (Node Version Manager)
-- ✓ Install development tools (fzf, ripgrep, fd, jq, gh)
-- ✓ **macOS**: Install Homebrew and packages from Brewfile
-- ✓ **Linux**: Build/install tools from source where needed
-- ✓ Set zsh as your default shell
-- ✓ Backup existing configs to `~/.dotfiles_backup/`
-- ✓ Copy dotfiles to appropriate locations
-- ✓ Initialize and link Neovim config
-
-### Post-Installation
-
-1. **Install Python version**:
-   ```bash
-   pyenv install 3.12.0
-   pyenv global 3.12.0
-   ```
-
-2. **Install Node version**:
-   ```bash
-   nvm install --lts
-   nvm use --lts
-   ```
-
-3. **Launch Neovim** to auto-install plugins:
-   ```bash
-   nvim
-   # Lazy.nvim will automatically install all plugins
-   ```
-
-
-## Directory Structure
+## Structure
 
 ```
 dotfiles/
+├── nvim/                  # Neovim config (git submodule)
 ├── config/
-│   ├── nvim/              # Neovim config (git submodule)
-│   ├── ghostty/
-│   │   └── config         # Ghostty terminal config
-│   └── aerospace/
-│       └── aerospace.toml # AeroSpace window manager (macOS)
-├── shell/
-│   └── zsh/
-│       ├── aliases.zsh    # Shell aliases
-│       ├── completion.zsh # Completion setup
-│       ├── env.zsh        # Environment variables
-│       ├── functions.zsh  # Custom functions
-│       ├── nvm.zsh        # NVM initialization
-│       ├── path.zsh       # PATH configuration
-│       ├── prompt.zsh     # Git-aware prompt
-│       └── pyenv.zsh      # Pyenv initialization
-├── .zshrc                 # Main zsh config (sources modules)
-├── .tmux.conf             # Tmux configuration
-├── .gitconfig             # Git configuration template
-├── Brewfile               # macOS package definitions
-├── install.sh             # Installation script
-└── README.md              # This file
+│   ├── ghostty/config     # Ghostty terminal
+│   └── aerospace/         # AeroSpace window manager (macOS)
+├── .zshrc                 # Zsh config
+├── .tmux.conf             # Tmux config
+├── .gitconfig             # Git config (template)
+├── Brewfile               # Homebrew packages
+└── install.sh             # Setup script
 ```
 
-## Configuration Highlights
-
-### Zsh
-- **Modular design** - Easy to add/remove functionality
-- **Smart completion** - Case-insensitive with automatic suggestions
-- **Git integration** - Branch name and status in prompt
-- **Custom aliases** - Shortcuts for common tasks
+## Key bindings
 
 ### Tmux
-- **Prefix**: `Ctrl+Space` (instead of `Ctrl+B`)
-- **Navigation**: `Alt+hjkl` to move between panes
-- **Splits**: `\` for horizontal, `-` for vertical
-- **Mouse support** enabled
+- **Prefix**: `Ctrl+Space`
+- **Panes**: `Alt+hjkl` to navigate, `\` horizontal split, `-` vertical split
+- **Mouse**: enabled
 
 ### AeroSpace (macOS)
-- **i3-style tiling** - Automatic window management
-- **Keyboard-driven** - `Alt+hjkl` for navigation
-- **Workspaces** - Support for 1-9 and A-Z
+- **Navigation**: `Alt+hjkl`
+- **Move windows**: `Alt+Shift+hjkl`
+- **Workspaces**: `Alt+1-9`, `Alt+A-Z`
 
-## Manual Installation (Alternative)
+## Updating
 
-If you prefer to manually install without the script:
-
-1. **Install base tools**:
-   - macOS: `brew install git zsh tmux neovim fzf ripgrep fd`
-   - Ubuntu: `sudo apt install git zsh tmux build-essential`
-
-2. **Install version managers**:
-   ```bash
-   # pyenv
-   curl https://pyenv.run | bash
-
-   # nvm
-   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-   ```
-
-3. **Copy configs**:
-   ```bash
-   cd ~/.dotfiles
-   cp .zshrc ~/.zshrc
-   cp -r shell ~/.config/shell
-   cp .tmux.conf ~/.tmux.conf
-   cp -r config/ghostty ~/.config/ghostty
-   cp .gitconfig ~/.gitconfig
-   ln -s ~/.dotfiles/nvim ~/.config/nvim
-   ```
-
-4. **Set zsh as default shell**:
-   ```bash
-   chsh -s $(which zsh)
-   ```
-
-## Maintenance
-
-### Update Neovim Config
-
-The nvim config is a git submodule, so you can update it independently:
+### Neovim config
 
 ```bash
-cd ~/.dotfiles/nvim
+cd ~/code/dotfiles/nvim
 git pull origin main
-cd ~/.dotfiles
+cd ~/code/dotfiles
 git add nvim
-git commit -m "Update nvim submodule"
+git commit -m "chore: update nvim submodule"
 ```
 
-### Update Brewfile (macOS)
-
-To capture currently installed packages:
+### Brewfile
 
 ```bash
-cd ~/.dotfiles
-brew bundle dump --force
-git add Brewfile
-git commit -m "Update Brewfile"
+brew bundle dump --force --file=~/code/dotfiles/Brewfile
 ```
-
-### Add New Zsh Module
-
-1. Create new file in `shell/zsh/` (e.g., `docker.zsh`)
-2. Add `source "$ZSH_CONFIG_DIR/docker.zsh"` to `.zshrc`
-3. Commit both files
-
-## Troubleshooting
-
-### Zsh modules not loading
-
-Make sure the paths in `.zshrc` are correct. The script automatically detects whether to use `~/.config/shell/zsh` or the dotfiles directory.
-
-### Neovim plugins not installing
-
-Run `:Lazy sync` inside Neovim to manually trigger plugin installation.
-
-### pyenv/nvm not found
-
-Source your `.zshrc` again or restart your terminal:
-```bash
-source ~/.zshrc
-```
-
-## Platform Support
-
-| OS | Status | Notes |
-|----|--------|-------|
-| macOS (Intel) | ✅ Fully supported | Tested on macOS Sonoma |
-| macOS (Apple Silicon) | ✅ Fully supported | Homebrew handles architecture |
-| Ubuntu 22.04+ | ✅ Fully supported | apt-based package installation |
-| Debian 11+ | ✅ Fully supported | apt-based package installation |
-| Other Linux | ⚠️ Partial | May require manual package installation |
-
-## License
-
-Free to use, modify, and distribute. No warranty provided.
-
-## Credits
-
-- Zsh prompt inspired by Oh-My-Zsh
-- Neovim config structure based on modern Lua patterns
-- Catppuccin theme by [@catppuccin](https://github.com/catppuccin)
