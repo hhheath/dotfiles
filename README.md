@@ -7,7 +7,7 @@ Personal dotfiles for macOS and Linux.
 - **zsh** — single `.zshrc` with custom git-aware prompt, aliases, and functions
 - **ghostty** — terminal config (Inconsolata Mono Nerd Font, Catppuccin Mocha)
 - **tmux** — `Ctrl+Space` prefix, vim-style pane navigation
-- **neovim** — full LSP/Treesitter setup, maintained as a [submodule](https://github.com/hhheath/nvim)
+- **neovim** — full LSP/Treesitter setup, maintained in a [separate repo](https://github.com/hhheath/nvim)
 - **AeroSpace** — i3-like tiling window manager (macOS)
 - **Brewfile** — macOS packages via Homebrew
 - **Claude Code** — AI coding assistant
@@ -15,7 +15,7 @@ Personal dotfiles for macOS and Linux.
 ## Install
 
 ```bash
-git clone --recurse-submodules https://github.com/hhheath/dotfiles.git ~/code/dotfiles
+git clone https://github.com/hhheath/dotfiles.git ~/code/dotfiles
 cd ~/code/dotfiles
 ./install.sh
 ```
@@ -38,7 +38,6 @@ The install script handles both platforms:
 
 ```
 dotfiles/
-├── nvim/                  # Neovim config (git submodule)
 ├── config/
 │   ├── ghostty/config     # Ghostty terminal
 │   └── aerospace/         # AeroSpace window manager (macOS)
@@ -62,16 +61,6 @@ dotfiles/
 - **Workspaces**: `Alt+1-9`, `Alt+A-Z`
 
 ## Updating
-
-### Neovim config
-
-```bash
-cd ~/code/dotfiles/nvim
-git pull origin main
-cd ~/code/dotfiles
-git add nvim
-git commit -m "chore: update nvim submodule"
-```
 
 ### Brewfile
 

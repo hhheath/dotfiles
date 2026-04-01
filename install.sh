@@ -101,14 +101,12 @@ copy_configs() {
     [ -f "$DOTFILES_DIR/config/aerospace/aerospace.toml" ] && \
         backup_and_copy "$DOTFILES_DIR/config/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 
-    # nvim config (symlink so updates come from repo)
-    cd "$DOTFILES_DIR"
-    git submodule update --init --recursive
-    if [ ! -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
-        rm -f "$HOME/.config/nvim"
-        ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+    # nvim config (separate repo)
+    if [ ! -d "$HOME/.config/nvim" ]; then
+        info "Cloning nvim config..."
+        git clone https://github.com/hhheath/nvim.git "$HOME/.config/nvim"
     else
-        warn "~/.config/nvim exists and isn't a symlink, skipping"
+        info "~/.config/nvim already exists, skipping"
     fi
 }
 
