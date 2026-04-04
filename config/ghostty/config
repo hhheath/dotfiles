@@ -1,7 +1,7 @@
 font-family = InconsolataMonoNerdFont
 font-size = 14
 confirm-close-surface = false
-theme = catppuccin mocha
+theme = Catppuccin Mocha
 window-width = 200
 window-height = 60
 
